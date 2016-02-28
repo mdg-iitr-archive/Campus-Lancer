@@ -14,15 +14,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aka.campus_lancer.fragments.FeedsFragment;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
     private String[] mDataset;
-    private  Context mContext;
-    List<Persons> persons;
+    private Context mContext;
+    ArrayList<Persons> persons;
+    private FeedsFragment feedsFragment;
 
-    MyRecyclerViewAdapter(List<Persons> persons){
+    public MyRecyclerViewAdapter(ArrayList<Persons> persons) {
         this.persons = persons;
+//        this.feedsFragment = feedsFragment;
     }
 
     // Provide a reference to the views for each data item
@@ -69,8 +74,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int i) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
-     holder.personName.setText(persons.get(i).name);
-        holder.personAge.setText(persons.get(i).age);
+        holder.personName.setText(persons.get(i).name);
+        holder.personAge.setText(String.valueOf(persons.get(i).age));
         holder.personPhoto.setImageResource(R.mipmap.akshay);
 
     }
@@ -80,6 +85,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public int getItemCount() {
         return persons.size();
     }
+
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
