@@ -1,5 +1,6 @@
 package com.aka.campus_lancer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,21 +27,26 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<Persons> persons ;
+    EditText t;
+    ImageButton ibtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        t=(EditText)findViewById(R.id.search1);
+        ibtn =(ImageButton)findViewById(R.id.Noti);
         persons = new ArrayList<Persons>();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent i=new Intent(MainActivity.this,Form.class);
+                        startActivity(i);
             }
         });
 
@@ -87,6 +95,13 @@ public class MainActivity extends AppCompatActivity
 
 
     }
+    public void search(View v)
+    {
+
+        t.setText("");
+        ibtn.setVisibility(View.INVISIBLE);
+        t.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void onBackPressed() {
@@ -126,17 +141,15 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
 
-        } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+       if (id == R.id.about) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.people) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.logout) {
+
+        } else if (id == R.id.report) {
 
         }
 
